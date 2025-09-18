@@ -54,7 +54,7 @@ def apply_rotary_emb(
     half = head_dim//2
     dims = torch.arange(head_dim // 2).float()
     inv_freq = 1.0 / (theta ** (2*dims / (head_dim))).to(device)
-    t = torch.arange(seqlen).float()
+    t = torch.arange(seqlen).float().to(device)
     freq_cis = torch.outer(t, inv_freq).to(device)
 
     freq_cis_expanded = freq_cis.repeat_interleave(2, dim=-1)  # expanded to 
