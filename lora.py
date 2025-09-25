@@ -49,8 +49,8 @@ class LoRALayer(nn.Module):
         """
         # todo
         out_og = self.original_layer(x)
-        print((self.lora_B@self.lora_A).shape, x.shape)
-        out_lora = (self.lora_B @ self.lora_A)
+        # print((self.lora_B@self.lora_A).shape, x.shape)
+        out_lora = (self.lora_B @ self.lora_A) 
         out_lora = x@out_lora
         out_lora *= self.scaling
         return out_og + out_lora
